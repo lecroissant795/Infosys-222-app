@@ -1,7 +1,7 @@
 import { CLICK_SOUND_TYPES } from "../constants/clickSound.js";
 
 const MOBILE_MEDIA_QUERY = "(max-width: 768px)";
-const CLICK_SOUND_STORAGE_KEY = "acctg-click-sound";
+const CLICK_SOUND_STORAGE_KEY = "infosys-click-sound";
 const CLICK_SOUND_SELECTOR =
   'button:not(:disabled), a[href], input[type="button"]:not(:disabled), input[type="submit"]:not(:disabled), input[type="reset"]:not(:disabled), [role="button"]:not([aria-disabled="true"])';
 

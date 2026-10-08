@@ -165,7 +165,7 @@ function buildSystemPrompt(
   performanceContext?: Record<string, unknown> | null
 ): string {
   const base =
-    "You are a friendly ACCTG 102 accounting tutor. Use clear, exam-focused language. Keep responses concise (2-4 short paragraphs max unless the student asks for more).";
+    "You are a friendly INFOSYS 222 tutor. Use clear, exam-focused language. Keep responses concise (2-4 short paragraphs max unless the student asks for more).";
   const performanceGuidance = buildPerformanceGuidance(performanceContext);
 
   switch (intent) {
@@ -183,7 +183,7 @@ ${buildExplainPrompt(question)}${performanceGuidance}`;
       return `${base}
 
 Answer the student's follow-up question in the context of the current quiz question.
-- Stay focused on accounting concepts relevant to ACCTG 102.
+- Stay focused on concepts relevant to INFOSYS 222.
 - If they ask for the direct answer before attempting the question, give guidance instead of the final answer.${performanceGuidance}`;
     default:
       return base;

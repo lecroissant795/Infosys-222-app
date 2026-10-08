@@ -90,7 +90,7 @@ const PRACTICE_QUIZ_SCHEMA = {
 } as const;
 
 function buildSystemPrompt(questionType: string, practiceLabel: string): string {
-  return `You are an ACCTG 102 exam question writer. Generate fresh practice questions for "${practiceLabel}".
+  return `You are an INFOSYS 222 exam question writer. Generate fresh practice questions for "${practiceLabel}".
 
 Every generated question MUST:
 - use type "${questionType}" exactly

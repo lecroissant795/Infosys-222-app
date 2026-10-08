@@ -79,4 +79,4 @@ const server = Bun.serve({
 });
 
 logServerEnvWarnings();
-console.log(`ACCTG 102 Exam Prep running at http://localhost:${server.port}`);
+console.log(`INFOSYS 222 Exam Prep running at http://localhost:${server.port}`);

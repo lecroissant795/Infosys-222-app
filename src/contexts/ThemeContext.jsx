@@ -1,6 +1,6 @@
 import { createContext, useContext, useEffect, useState } from "react";
 
-const STORAGE_KEY = "acctg-theme";
+const STORAGE_KEY = "infosys-theme";
 
 const ThemeContext = createContext(null);
 

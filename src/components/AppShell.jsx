@@ -5,8 +5,8 @@ import { theme } from "../styles/theme.js";
 
 const SidebarContext = createContext(null);
 
-const STORAGE_KEY = "acctg-sidebar-width";
-const COLLAPSED_STORAGE_KEY = "acctg-sidebar-collapsed";
+const STORAGE_KEY = "infosys-sidebar-width";
+const COLLAPSED_STORAGE_KEY = "infosys-sidebar-collapsed";
 const { width: DEFAULT_WIDTH, minWidth: MIN_WIDTH, maxWidth: MAX_WIDTH } = theme.sidebar;
 
 function readCollapsed() {

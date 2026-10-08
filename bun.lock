@@ -3,7 +3,7 @@
   "configVersion": 1,
   "workspaces": {
     "": {
-      "name": "acctg102-exam-prep",
+      "name": "infosys222-exam-prep",
       "dependencies": {
         "@supabase/supabase-js": "^2.106.2",
         "react": "^19.1.0",

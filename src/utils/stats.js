@@ -1,4 +1,4 @@
-const STORAGE_KEY = "acctg102-quiz-stats";
+const STORAGE_KEY = "infosys222-quiz-stats";
 
 let memoryStore = null;
 let persistHandler = null;

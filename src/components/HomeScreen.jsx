@@ -161,7 +161,7 @@ function HomeSidebar({
           <div style={{ display: "flex", alignItems: "center", gap: 8, minWidth: 0 }}>
             <span style={{ fontSize: 20 }}>📒</span>
             <span style={{ fontSize: 14, fontWeight: 600, color: theme.colors.text }}>
-              ACCTG 102
+              INFOSYS 222
             </span>
           </div>
           <SidebarCollapseButton />
@@ -236,7 +236,7 @@ export function HomeScreen({
     <AppShell sidebar={sidebar} footerAttribution>
       <header className="screen-header" style={{ marginBottom: 40, display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 16 }}>
         <div>
-          <h1 className="page-title" style={pageTitleStyle}>ACCTG 102 Exam Prep</h1>
+          <h1 className="page-title" style={pageTitleStyle}>INFOSYS 222 Exam Prep</h1>
           <p
             className="page-subtitle"
             style={{

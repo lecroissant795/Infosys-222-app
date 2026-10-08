@@ -66,7 +66,7 @@ export function MobileMenu() {
               <button type="button" className="mobile-menu-home" onClick={goHome} {...NAV_CLICK_SOUND_PROPS}>
                 <span aria-hidden="true">📒</span>
                 <span>
-                  <span className="mobile-menu-home__title">ACCTG 102</span>
+                  <span className="mobile-menu-home__title">INFOSYS 222</span>
                   <span className="mobile-menu-home__subtitle">Exam Prep</span>
                 </span>
               </button>

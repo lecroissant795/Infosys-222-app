@@ -1,35 +1,6 @@
 import { normalizeQuestion, QUESTION_TYPES } from "./schema/questionTypes.js";
-import * as ch01 from "./chapters/ch01-introduction.js";
-import * as ch01Written from "./chapters/ch01-written.js";
-import * as ch02 from "./chapters/ch02-recording-process.js";
-import * as ch03 from "./chapters/ch03-accrual-accounting.js";
-import * as ch04 from "./chapters/ch04-inventories.js";
-import * as ch05 from "./chapters/ch05-reporting-inventory.js";
-import * as ch07 from "./chapters/ch07-cash-receivables.js";
-import * as ch08 from "./chapters/ch08-non-current-assets.js";
-import * as ch09 from "./chapters/ch09-liabilities.js";
-import * as ch10 from "./chapters/ch10-equity.js";
-import * as chJournalPack from "./chapters/ch-practice-journal-entries.js";
-import * as chNumericPack from "./chapters/ch-practice-numeric-input.js";
-import * as chTablePack from "./chapters/ch-practice-table-classification.js";
-import * as chCasePack from "./chapters/ch-practice-case-sets.js";
-
-export const CHAPTERS = [
-  ch01,
-  ch02,
-  ch03,
-  ch04,
-  ch05,
-  ch07,
-  ch08,
-  ch09,
-  ch10,
-  chJournalPack,
-  chNumericPack,
-  chTablePack,
-  chCasePack,
-];
-export const WRITTEN_CHAPTERS = [ch01Written];
+export const CHAPTERS = [];
+export const WRITTEN_CHAPTERS = [];
 export const ALL_CATEGORIES = [...CHAPTERS, ...WRITTEN_CHAPTERS];
 
 export const QUESTION_BANK = Object.fromEntries(
