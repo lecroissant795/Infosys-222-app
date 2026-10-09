@@ -28,6 +28,7 @@ Use this when converting guided self-study PDFs into app questions.
 - Keep `q` short when possible.
 - Put long shared facts into `scenario` for `case_set`.
 - Keep `explanation` concise and exam-focused.
+- For MCQs, follow [MCQ_ANSWER_RULES.md](./MCQ_ANSWER_RULES.md) (no longest-answer giveaways; distractors must have equal depth and length; balance A–D positions).
 - Add `tags` for topic targeting later.
 - For money values, use numbers not strings in `answer`.
 

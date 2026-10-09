@@ -1,5 +1,5 @@
 import { describe, expect, test } from "bun:test";
-import { QUESTIONS } from "../data/index.js";
+import { QUESTIONS, topics } from "../data/index.js";
 import {
   applyQuizPlan,
   applyPracticeQuiz,
@@ -60,7 +60,7 @@ describe("applyQuizPlan", () => {
 
 describe("buildMcqQuizQuestions", () => {
   test("shuffles MCQ order and answer options", () => {
-    const topic = "Ch 2: The Recording Process";
+    const topic = topics[0];
     const result = buildMcqQuizQuestions("topic", topic);
 
     expect(result.length).toBeGreaterThan(0);
@@ -74,7 +74,7 @@ describe("buildMcqQuizQuestions", () => {
   });
 
   test("limits chapter quizzes to requested size without duplicates", () => {
-    const topic = "Ch 2: The Recording Process";
+    const topic = topics[0];
     const result = resolveChapterQuizQuestions(topic, 5);
 
     expect(result.actualSize).toBe(5);
@@ -83,7 +83,7 @@ describe("buildMcqQuizQuestions", () => {
   });
 
   test("includes all chapter questions when all is selected", () => {
-    const topic = "Ch 2: The Recording Process";
+    const topic = topics[0];
     const available = QUESTIONS[topic].length;
     const result = resolveChapterQuizQuestions(topic, "all");
 

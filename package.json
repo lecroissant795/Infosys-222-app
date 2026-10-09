@@ -5,7 +5,9 @@
   "scripts": {
     "dev": "bun --hot ./index.ts",
     "start": "bun ./index.ts",
-    "build": "bun build ./index.html --outdir dist --minify"
+    "build": "bun build ./index.html --outdir dist --minify",
+    "test:supabase": "bun ./scripts/test-supabase.ts",
+    "test:openai": "bun ./scripts/test-openai.ts"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.106.2",

@@ -1,5 +1,15 @@
 import { normalizeQuestion, QUESTION_TYPES } from "./schema/questionTypes.js";
-export const CHAPTERS = [];
+import * as normalisation from "./chapters/normalisation.js";
+import * as sql from "./chapters/sql.js";
+import * as dbmsFundamentals from "./chapters/dbms-fundamentals.js";
+import * as dataWarehouse from "./chapters/data-warehouse.js";
+
+export const CHAPTERS = [
+  normalisation,
+  sql,
+  dbmsFundamentals,
+  dataWarehouse,
+];
 export const WRITTEN_CHAPTERS = [];
 export const ALL_CATEGORIES = [...CHAPTERS, ...WRITTEN_CHAPTERS];
 
