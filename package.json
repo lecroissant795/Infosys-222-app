@@ -3,8 +3,8 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "$HOME/.bun/bin/bun --hot ./index.ts",
-    "start": "$HOME/.bun/bin/bun ./index.ts",
+    "dev": "bun --hot ./index.ts",
+    "start": "bun ./index.ts",
     "build": "bun build ./index.html --outdir dist --minify"
   },
   "dependencies": {
