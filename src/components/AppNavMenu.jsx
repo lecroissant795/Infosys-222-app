@@ -1,5 +1,6 @@
 import { MINI_QUIZ_SIZES } from "../constants/topicColors.js";
 import { theme } from "../styles/theme.js";
+import { SQL_TUTOR_LABEL, SQL_TUTOR_QUESTION_COUNT } from "../constants/sqlTutor.js";
 import { SidebarDivider, SidebarItem, SidebarSection } from "./AppShell.jsx";
 
 export function AppNavMenu({
@@ -17,6 +18,7 @@ export function AppNavMenu({
   onStartChapter,
   onStartPracticeGroup,
   onOpenStats,
+  onStartSqlTutor,
   onNavigate,
 }) {
   const wrap = (handler) => () => {
@@ -73,6 +75,18 @@ export function AppNavMenu({
               onClick={wrap(() => onStartPracticeGroup(group.label))}
             />
           ))}
+        </SidebarSection>
+
+        <SidebarDivider />
+
+        <SidebarSection label="SQL Tutor">
+          <SidebarItem
+            icon="🧪"
+            label={SQL_TUTOR_LABEL}
+            badge={`${SQL_TUTOR_QUESTION_COUNT}`}
+            indent
+            onClick={wrap(onStartSqlTutor)}
+          />
         </SidebarSection>
 
         {user && (

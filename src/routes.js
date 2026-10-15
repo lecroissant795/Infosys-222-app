@@ -1,5 +1,6 @@
 import { CHAPTERS, practiceGroups, topics } from "./data/index.js";
 import { MINI_QUIZ_SIZES } from "./constants/topicColors.js";
+import { SQL_TUTOR_QUESTION_COUNT } from "./constants/sqlTutor.js";
 
 export function slugify(value) {
   return value
@@ -34,6 +35,7 @@ export const ROUTES = {
   home: "/",
   auth: "/auth",
   stats: "/stats",
+  sqlTutor: (number = 1) => `/sql-tutor/${number}`,
   quizMini: (size) => `/quiz/mini/${size}`,
   quizMiniResults: (size) => `/quiz/mini/${size}/results`,
   quizExam: "/quiz/exam",
@@ -53,7 +55,7 @@ export function practicePath(label) {
 }
 
 export function resultsPathForRoute(route) {
-  if (!route || route.name === "home" || route.name === "auth" || route.name === "stats") {
+  if (!route || route.name === "home" || route.name === "auth" || route.name === "stats" || route.name === "sql-tutor") {
     return ROUTES.home;
   }
 
@@ -85,6 +87,14 @@ export function parseRoute(pathname) {
   if (path === ROUTES.home) return { name: "home" };
   if (path === ROUTES.auth) return { name: "auth" };
   if (path === ROUTES.stats) return { name: "stats" };
+
+  if (path === "/sql-tutor") return { name: "sql-tutor", number: 1 };
+  const sqlMatch = path.match(/^\/sql-tutor\/(\d+)$/);
+  if (sqlMatch) {
+    const number = Number(sqlMatch[1]);
+    if (number < 1 || number > SQL_TUTOR_QUESTION_COUNT) return { name: "not-found" };
+    return { name: "sql-tutor", number };
+  }
 
   let match = path.match(/^\/quiz\/mini\/(\d+)(?:\/results)?$/);
   if (match) {
@@ -148,6 +158,7 @@ export const ROUTE_CATALOG = {
     { path: ROUTES.home, screen: "Home", description: "Dashboard with quiz launchers and chapter list" },
     { path: ROUTES.auth, screen: "Auth", description: "Sign in / sign up" },
     { path: ROUTES.stats, screen: "Stats", description: "Quiz history and performance" },
+    { path: ROUTES.sqlTutor(1), screen: "SqlTutor", description: "Interactive SQL exam tutor (CodeRunner style)" },
   ],
   quizzes: [
     { path: ROUTES.quizMini(5), screen: "Quiz", mode: "mini", size: 5 },

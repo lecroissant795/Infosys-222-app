@@ -6,6 +6,7 @@ import { HomeScreen } from "./components/HomeScreen.jsx";
 import { MobileMenu } from "./components/MobileMenu.jsx";
 import { QuizScreen } from "./components/QuizScreen.jsx";
 import { ResultsScreen } from "./components/ResultsScreen.jsx";
+import { SqlTutorScreen } from "./components/SqlTutorScreen.jsx";
 import { StatsScreen } from "./components/StatsScreen.jsx";
 import { useAuth } from "./contexts/AuthContext.jsx";
 import { NavigationProvider } from "./contexts/NavigationContext.jsx";
@@ -444,6 +445,7 @@ export default function App() {
       navigate(practicePath(label));
     },
     onOpenStats: openStats,
+    onStartSqlTutor: () => navigate(ROUTES.sqlTutor(1)),
     onHome: () => navigate(ROUTES.home),
   };
 
@@ -484,6 +486,15 @@ export default function App() {
           navigate(practicePath(label));
         }}
         onOpenStats={openStats}
+        onStartSqlTutor={() => navigate(ROUTES.sqlTutor(1))}
+      />
+    );
+  } else if (route.name === "sql-tutor") {
+    screen = (
+      <SqlTutorScreen
+        number={route.number}
+        onNavigate={(number) => navigate(ROUTES.sqlTutor(number))}
+        onBack={() => navigate(ROUTES.home)}
       />
     );
   } else if (route.name === "stats") {

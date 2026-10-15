@@ -1,6 +1,7 @@
 import { MINI_QUIZ_SIZES, TOPIC_COLORS } from "../constants/topicColors.js";
 import { NAV_CLICK_SOUND_PROPS } from "../constants/clickSound.js";
 import { theme, pageTitleStyle, sectionLabelStyle } from "../styles/theme.js";
+import { SQL_TUTOR_LABEL, SQL_TUTOR_QUESTION_COUNT } from "../constants/sqlTutor.js";
 import { AppNavMenu } from "./AppNavMenu.jsx";
 import { getPracticeLoadingMessage } from "../utils/quizPlan.js";
 import {
@@ -144,6 +145,7 @@ function HomeSidebar({
   onStartChapter,
   onStartPracticeGroup,
   onOpenStats,
+  onStartSqlTutor,
 }) {
   return (
     <>
@@ -188,6 +190,7 @@ function HomeSidebar({
         onStartChapter={onStartChapter}
         onStartPracticeGroup={onStartPracticeGroup}
         onOpenStats={onOpenStats}
+        onStartSqlTutor={onStartSqlTutor}
       />
     </>
   );
@@ -212,6 +215,7 @@ export function HomeScreen({
   onStartChapter,
   onStartPracticeGroup,
   onOpenStats,
+  onStartSqlTutor,
 }) {
   const sidebar = (
     <HomeSidebar
@@ -229,6 +233,7 @@ export function HomeScreen({
       onStartChapter={onStartChapter}
       onStartPracticeGroup={onStartPracticeGroup}
       onOpenStats={onOpenStats}
+      onStartSqlTutor={onStartSqlTutor}
     />
   );
 
@@ -451,6 +456,18 @@ export function HomeScreen({
             onClick={() => onStartPracticeGroup(group.label)}
           />
         ))}
+      </DatabaseTable>
+
+      <div style={{ marginBottom: 8 }}>
+        <div style={sectionLabelStyle}>SQL Exam Tutor</div>
+      </div>
+      <DatabaseTable>
+        <DatabaseRow
+          label={`${SQL_TUTOR_LABEL} — CodeRunner-style SQL questions`}
+          badge={`${SQL_TUTOR_QUESTION_COUNT} Qs`}
+          accent="#2383e2"
+          onClick={onStartSqlTutor}
+        />
       </DatabaseTable>
     </AppShell>
   );

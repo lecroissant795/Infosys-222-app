@@ -14,6 +14,7 @@ import {
   shouldUseTutorFallback,
   type TutorRequest,
 } from "./src/server/quizTutor.ts";
+import { checkSqlAnswer, getSqlTutorQuestion } from "./src/server/sqlTutor.ts";
 
 const server = Bun.serve({
   routes: {
@@ -21,6 +22,22 @@ const server = Bun.serve({
     "/auth": index,
     "/stats": index,
     "/quiz/*": index,
+    "/sql-tutor": index,
+    "/sql-tutor/*": index,
+    "/api/sql-tutor": {
+      GET(req) {
+        const number = Number(new URL(req.url).searchParams.get("number"));
+        const question = getSqlTutorQuestion(number);
+        if (!question) return Response.json({ error: "Question not found" }, { status: 404 });
+        return Response.json(question);
+      },
+      async POST(req) {
+        const body = (await req.json().catch(() => ({}))) as { number?: number; sql?: string };
+        const result = checkSqlAnswer(Number(body.number), body.sql);
+        if (!result) return Response.json({ error: "Question not found" }, { status: 404 });
+        return Response.json(result);
+      },
+    },
     "/api/config": {
       GET() {
         return Response.json(getServerEnvStatus());
