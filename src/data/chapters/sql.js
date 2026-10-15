@@ -360,5 +360,377 @@ export const questions = [
     ],
     "answer": 1,
     "explanation": "OFFSET 20 specifies that the first 20 rows of the ordered result set are skipped, and LIMIT 10 specifies that up to 10 subsequent rows are returned."
+  },
+  {
+    "id": "sql-n01",
+    "q": "Why is SQL described as a fourth-generation language (4GL)?",
+    "options": [
+      "You write step-by-step procedures describing exactly how the DBMS should locate each row on disk.",
+      "It compiles directly into machine code, so every statement runs faster than any third-generation language.",
+      "You describe what result you want and the DBMS decides how to retrieve it.",
+      "It can only be run from inside an application written in a third-generation language such as C."
+    ],
+    "answer": 2,
+    "explanation": "A 4GL is declarative: you state what you want, not how to get it. The procedural 'how' belongs to third-generation languages, and SQL is neither compiled to machine code by the user nor limited to embedding in 3GL programs."
+  },
+  {
+    "id": "sql-n02",
+    "q": "Which category of SQL commands does CREATE TABLE belong to?",
+    "options": [
+      "DDL (Data Definition Language)",
+      "DML (Data Manipulation Language), because it adds a new object that will contain rows",
+      "DQL (Data Query Language), because it asks the database to describe a structure",
+      "DCL (Data Control Language), because it grants a user permission to own a table"
+    ],
+    "answer": 0,
+    "explanation": "CREATE TABLE, ALTER TABLE and DROP TABLE create and restructure database objects, so they are DDL. DML works on the data inside objects, DQL queries data, and DCL controls access."
+  },
+  {
+    "id": "sql-n03",
+    "q": "Which category do INSERT, UPDATE and DELETE belong to?",
+    "options": [
+      "DDL, because each statement changes the structure of the table it is applied to",
+      "DQL, because each statement retrieves rows from the database and presents them",
+      "DCL, because each statement controls which users are permitted to change data",
+      "DML, because each statement manipulates data within existing objects"
+    ],
+    "answer": 3,
+    "explanation": "INSERT, UPDATE and DELETE manipulate the data held inside existing objects, which is the definition of DML. They do not change structure (DDL), return query results (DQL) or manage permissions (DCL)."
+  },
+  {
+    "id": "sql-n04",
+    "q": "Which description matches a multiple-row (aggregate) function in SQL?",
+    "options": [
+      "It acts on each row separately and returns one result per row, and it can be nested.",
+      "It works on many rows and returns one result per group of rows.",
+      "It returns a separate result for every column of the table it is applied to.",
+      "It can only be used in the WHERE clause to compare one row against another."
+    ],
+    "answer": 1,
+    "explanation": "Multiple-row (group or aggregate) functions such as COUNT, SUM and AVG work across many rows and give one result per group. The first option describes single-row functions."
+  },
+  {
+    "id": "sql-n05",
+    "q": "Which statement about SQL syntax rules is correct?",
+    "options": [
+      "Keywords and table or column names are case insensitive, and a semicolon ends a statement.",
+      "Keywords may be abbreviated provided the abbreviation is unambiguous, and a statement ends at the first carriage return.",
+      "Statements must be written on one line, because carriage returns and white space change the meaning of a statement.",
+      "Keywords are case sensitive and must be capitalised, otherwise SQLite treats the statement as a syntax error."
+    ],
+    "answer": 0,
+    "explanation": "SQL is case insensitive, ignores white space and carriage returns, does not allow keywords to be abbreviated or split across lines, and uses a semicolon to end a statement. Capitalising keywords is a readability habit, not a rule."
+  },
+  {
+    "id": "sql-n06",
+    "q": "Which DBMS is used for all SQL content and assessments in this course?",
+    "options": [
+      "PostgreSQL, a server-based object-relational DBMS",
+      "Microsoft Access, a desktop DBMS with a graphical query builder",
+      "SQLite, an open-source embedded relational DBMS",
+      "Oracle Database, a commercial enterprise client-server DBMS"
+    ],
+    "answer": 2,
+    "explanation": "The course runs everything in SQLite, an open-source, cross-platform, embedded relational DBMS, using the Employee test database."
+  },
+  {
+    "id": "sql-n07",
+    "q": "Which query returns every column and every row of the Department table?",
+    "options": [
+      "SELECT Department FROM *;",
+      "SELECT * FROM Department;",
+      "FROM Department SELECT *;",
+      "SELECT COLUMNS(*) FROM Department;"
+    ],
+    "answer": 1,
+    "explanation": "SELECT identifies which columns and FROM identifies which table, in that order. The asterisk selects all columns."
+  },
+  {
+    "id": "sql-n08",
+    "q": "What does SELECT DISTINCT departmentID FROM Employee return?",
+    "options": [
+      "One row per employee, with each department ID repeated as many times as it occurs",
+      "Only the departments that have no employees assigned to them in the Employee table",
+      "A single value giving the number of different departments in the Employee table",
+      "Each department ID that appears in Employee, listed only once"
+    ],
+    "answer": 3,
+    "explanation": "DISTINCT removes duplicate rows from the result, so each department that has employees assigned is listed once. It does not count them and it does not look for departments with no employees."
+  },
+  {
+    "id": "sql-n09",
+    "q": "What does SELECT employeeID, empName FROM Employee LIMIT 3; return?",
+    "options": [
+      "Only the first three rows of the result",
+      "Only the rows where employeeID equals 3, with the name column included",
+      "The three employees with the highest employeeID values, sorted in descending order",
+      "Three columns of the Employee table, starting from the employeeID column"
+    ],
+    "answer": 0,
+    "explanation": "LIMIT places an upper bound on the number of rows returned by the whole SELECT, so only the first three rows come back. It does not sort or filter on a value."
+  },
+  {
+    "id": "sql-n10",
+    "q": "When OFFSET is used with LIMIT, what does OFFSET define?",
+    "options": [
+      "The maximum number of rows that the whole SELECT statement may return",
+      "The column by which the result set is sorted before any rows are returned",
+      "The starting point from which LIMIT begins counting rows",
+      "The number of duplicate rows to be removed before LIMIT is applied"
+    ],
+    "answer": 2,
+    "explanation": "LIMIT sets the upper bound on rows, and the optional OFFSET defines the starting point for LIMIT, effectively skipping that many rows first."
+  },
+  {
+    "id": "sql-n11",
+    "q": "Where is the WHERE clause placed in a SELECT statement, and what does it do?",
+    "options": [
+      "Before SELECT, so that rows are removed before any columns are chosen",
+      "After ORDER BY, so that only sorted rows are tested against the condition",
+      "Immediately after SELECT, and before the table is named in the statement",
+      "After FROM, restricting the rows that are returned"
+    ],
+    "answer": 3,
+    "explanation": "WHERE follows FROM and evaluates a boolean condition for each input row. Only rows evaluating to TRUE are kept."
+  },
+  {
+    "id": "sql-n12",
+    "q": "A row's WHERE condition evaluates to NULL. What happens to that row?",
+    "options": [
+      "It is kept, because NULL is treated the same as TRUE",
+      "It is excluded, in the same way as a row that evaluates to FALSE",
+      "It is kept, but each of its column values is displayed as NULL",
+      "The query stops with an error because the condition is undefined"
+    ],
+    "answer": 1,
+    "explanation": "Only rows where the condition is TRUE are kept; rows evaluating to FALSE or NULL are excluded."
+  },
+  {
+    "id": "sql-n13",
+    "q": "Which condition returns employees whose salary is from 1250 to 1500, including both of those values?",
+    "options": [
+      "WHERE salary BETWEEN 1250 AND 1500",
+      "WHERE salary > 1250 AND salary < 1500",
+      "WHERE salary IN (1250, 1500)",
+      "WHERE salary >= 1250 OR salary <= 1500"
+    ],
+    "answer": 0,
+    "explanation": "BETWEEN is inclusive of both boundaries. IN matches only the listed values, the strict comparisons exclude the endpoints, and the OR version matches every row."
+  },
+  {
+    "id": "sql-n14",
+    "q": "What does WHERE empName LIKE '_a%' match?",
+    "options": [
+      "Names that start with a literal underscore followed by the letter a",
+      "Names that begin with 'a' followed by any number of characters",
+      "Names with 'a' as the second character",
+      "Names that are exactly two characters long and end in 'a'"
+    ],
+    "answer": 2,
+    "explanation": "The underscore matches exactly one character and % matches zero or many, so the pattern means any first character, 'a' second, then anything."
+  },
+  {
+    "id": "sql-n15",
+    "q": "In a LIKE pattern, what do the wildcards % and _ represent?",
+    "options": [
+      "% matches exactly one character and _ matches zero or many characters",
+      "% matches zero or many characters and _ matches exactly one character",
+      "% matches any single digit and _ matches any single letter",
+      "% matches only an empty string and _ matches a single space"
+    ],
+    "answer": 1,
+    "explanation": "% stands for zero or many characters and _ stands for exactly one character."
+  },
+  {
+    "id": "sql-n16",
+    "q": "Which condition correctly finds employees who have no commission?",
+    "options": [
+      "WHERE commission = NULL",
+      "WHERE commission = 0 OR commission = ' '",
+      "WHERE commission LIKE NULL",
+      "WHERE commission IS NULL"
+    ],
+    "answer": 3,
+    "explanation": "NULL is not equal to anything, including zero or a blank space, so it must be tested with IS NULL (or IS NOT NULL)."
+  },
+  {
+    "id": "sql-n17",
+    "q": "A column contains only NULL values. What do SUM(X) and TOTAL(X) return?",
+    "options": [
+      "SUM returns NULL and TOTAL returns 0.0",
+      "Both return 0 because NULL values are treated as zero",
+      "SUM returns 0 and TOTAL returns NULL because TOTAL preserves NULL",
+      "Both raise an error because NULL cannot be aggregated"
+    ],
+    "answer": 0,
+    "explanation": "SUM returns NULL when all values are NULL, while TOTAL always returns a floating-point number, so it returns 0.0."
+  },
+  {
+    "id": "sql-n18",
+    "q": "Which is the order of precedence for the operators in a WHERE clause?",
+    "options": [
+      "OR, then AND, then NOT, with comparison operators evaluated last",
+      "AND, then OR, then NOT, with comparison operators evaluated first",
+      "Comparison operators, then NOT, then AND, then OR",
+      "NOT, then comparison operators, then OR, then AND"
+    ],
+    "answer": 2,
+    "explanation": "Comparison operators come first, then NOT, then AND, then OR. Parentheses override this order."
+  },
+  {
+    "id": "sql-n19",
+    "q": "Which rows does WHERE jobDescription = 'clerk' OR jobDescription = 'salesman' AND salary > 2000 return?",
+    "options": [
+      "Clerks and salesmen, but only those whose salary is above 2000",
+      "All clerks, plus only those salesmen who earn more than 2000",
+      "Only clerks earning above 2000, plus all salesmen",
+      "No rows, because OR and AND cannot appear in the same WHERE clause"
+    ],
+    "answer": 1,
+    "explanation": "AND is evaluated before OR, so the condition is clerk OR (salesman AND salary > 2000). Parentheses would be needed to filter both jobs by salary."
+  },
+  {
+    "id": "sql-n20",
+    "q": "Which statement about arithmetic operator precedence is correct?",
+    "options": [
+      "Addition and subtraction take priority over multiplication and division.",
+      "All operators have equal priority and are evaluated strictly right to left.",
+      "Parentheses are ignored, so priority depends only on the order columns appear in the SELECT list.",
+      "Multiplication, division and modulo take priority, and equal priorities are evaluated left to right."
+    ],
+    "answer": 3,
+    "explanation": "*, / and % are evaluated before + and -, operators of equal priority run left to right, and parentheses force priority."
+  },
+  {
+    "id": "sql-n21",
+    "q": "KING has a NULL commission. What does SELECT 12*salary + commission return for KING?",
+    "options": [
+      "Twelve times KING's salary, because NULL is treated as zero",
+      "An error, because NULL cannot be used in an arithmetic expression",
+      "NULL, because any arithmetic expression containing NULL evaluates to NULL",
+      "Zero, because the missing commission cancels out 12*salary"
+    ],
+    "answer": 2,
+    "explanation": "Any arithmetic expression that includes a NULL evaluates to NULL, so the result is NULL unless the NULL is replaced, for example with IFNULL."
+  },
+  {
+    "id": "sql-n22",
+    "q": "Which function replaces a NULL commission with 0 so a calculation still gives a number?",
+    "options": [
+      "IFNULL(commission, 0)",
+      "TYPEOF(commission, 0)",
+      "NULLIF(commission, 0)",
+      "REPLACE(commission, NULL, 0)"
+    ],
+    "answer": 0,
+    "explanation": "IFNULL(X,Y) returns the first non-NULL argument. NULLIF does the opposite, returning NULL when the values match."
+  },
+  {
+    "id": "sql-n23",
+    "q": "What does a column alias do?",
+    "options": [
+      "It permanently renames the column in the underlying table",
+      "It renames the column heading in the query result only",
+      "It creates an index on the column to speed up the query",
+      "It restricts the column so that it can only be used in calculations"
+    ],
+    "answer": 1,
+    "explanation": "An alias renames the heading in the result and does not change the table. It is especially useful for calculated columns."
+  },
+  {
+    "id": "sql-n24",
+    "q": "Which statement correctly gives salary*12 the heading Annual Salary?",
+    "options": [
+      "SELECT salary*12 AS Annual Salary FROM Employee;",
+      "SELECT salary*12 = \"Annual Salary\" FROM Employee;",
+      "SELECT \"Annual Salary\" salary*12 FROM Employee;",
+      "SELECT salary*12 \"Annual Salary\" FROM Employee;"
+    ],
+    "answer": 3,
+    "explanation": "The alias follows the expression and must be quoted (or in []) when it contains spaces. AS is optional."
+  },
+  {
+    "id": "sql-n25",
+    "q": "What does SELECT empName || ' is a ' || jobDescription return for a clerk named SMITH?",
+    "options": [
+      "SMITH is a clerk",
+      "SMITHis aclerk, because literal spaces are removed",
+      "SMITH clerk, because literal text is discarded",
+      "An error, because literals cannot appear in the SELECT list"
+    ],
+    "answer": 0,
+    "explanation": "The || operator concatenates columns and literal strings into one expression, and the literal is printed once per row."
+  },
+  {
+    "id": "sql-n26",
+    "q": "If ORDER BY is used without ASC or DESC, how are the rows sorted?",
+    "options": [
+      "Descending order, so the highest value is listed first",
+      "Ascending order, so the lowest value is listed first",
+      "No order at all, because ASC or DESC must always be written",
+      "Insertion order, because ORDER BY only breaks ties between rows"
+    ],
+    "answer": 1,
+    "explanation": "ASC (ascending) is the default sort order."
+  },
+  {
+    "id": "sql-n27",
+    "q": "Where does ORDER BY appear in a SELECT statement?",
+    "options": [
+      "Directly after SELECT, before the list of columns",
+      "Between FROM and WHERE, so rows are sorted before they are filtered",
+      "At the end, just before LIMIT and OFFSET",
+      "After LIMIT, so only the limited rows are sorted"
+    ],
+    "answer": 2,
+    "explanation": "ORDER BY comes last in the SELECT statement, just before LIMIT and OFFSET if they are present."
+  },
+  {
+    "id": "sql-n28",
+    "q": "Which function returns the position of the first occurrence of Y in X, or 0 if it is not found?",
+    "options": [
+      "SUBSTR(X,Y,Z)",
+      "REPLACE(X,Y,Z)",
+      "LENGTH(X)",
+      "INSTR(X,Y)"
+    ],
+    "answer": 3,
+    "explanation": "INSTR(X,Y) returns the position of the first match, or 0 if there is none. LOWER is often nested inside it to match reliably."
+  },
+  {
+    "id": "sql-n29",
+    "q": "What does SELECT SUBSTR('University of Auckland', 4, 7); return?",
+    "options": [
+      "versity",
+      "iversit",
+      "Univers",
+      "ersity "
+    ],
+    "answer": 0,
+    "explanation": "SUBSTR(X,Y,Z) starts at the Y-th character and returns Z characters: starting at character 4 gives 'versity'."
+  },
+  {
+    "id": "sql-n30",
+    "q": "Which function is most useful for finding the number of days between two dates?",
+    "options": [
+      "DATETIME(X), because it returns the date and time together as a string",
+      "STRFTIME('%Y', X), because it extracts the year of each date",
+      "TIME(X), because it returns the time portion as HH:MM:SS",
+      "JULIANDAY(X)"
+    ],
+    "answer": 3,
+    "explanation": "JULIANDAY returns the Julian day number, so subtracting two values gives the difference in days (divide by 7 for weeks)."
+  },
+  {
+    "id": "sql-n31",
+    "q": "What is the difference between COUNT(*) and COUNT(commission)?",
+    "options": [
+      "They are identical, because COUNT always ignores NULL values",
+      "COUNT(*) counts all rows, whereas COUNT(commission) counts only rows where commission is not NULL",
+      "COUNT(*) counts only non-NULL rows, whereas COUNT(commission) counts every row in the table",
+      "COUNT(*) sums the values in the table, whereas COUNT(commission) averages them"
+    ],
+    "answer": 1,
+    "explanation": "COUNT(X) counts rows where X is not NULL, while COUNT(*) gives the total number of rows."
   }
 ];
